@@ -52,8 +52,8 @@ module Ftools
 	end 
 
 	function Base.push!(a::Any, l::List )
-		tmp = List(a , l)
-		l.first,l.second = tmp.first, tmp.second  
+		l.second = copy(l)
+		l.first = a
 	end 
 
 	function Base.push!(l::List, a::Any , test::Any)
