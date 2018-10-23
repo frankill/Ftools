@@ -24,10 +24,25 @@ function Base.values(l::List)
 	lextra(l, res)
 end 
 
+function llength(l::List, r::Int=0)
+	if l.first == nothing 
+		return r
+	else 
+	 	lextra(l.second, r+1)
+	end 
+end 
+
 Base.keys( l::List ) = fieldnames( typeof(l) )
-Base.length(l::List) = length(values(l))
+Base.length(l::List) = llength(l)
 Base.pop!(l::List) = l.first 
-Base.push!(l::List, a::Any) = List(a, l)
+
+function Base.push!(l::List, a::Any)
+	if l.second.first == nothing
+	   l.second = List(a, List())
+	else
+		push!(l.second, a)
+	end 
+end 
  
 macro stack(expr...)
 	esc(genstack(collect(expr)))
