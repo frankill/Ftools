@@ -1,17 +1,17 @@
-mutable struct list 
- 		   first
-           second::list
-           list(first) = (x = new(first); x.second = x )
-           list(first, second::list) = new(first,second)
+mutable struct List 
+	   first::Any
+           second::List
+           List(first) = (x = new(first); x.second = x )
+           List(first, second::List) = new(first,second)
        end
 
-function Base.show( io::IO, x::list)
+function Base.show( io::IO, x::List)
 	x.first == nothing  && return 
 	print(io, x.first, ",")
 	show(io, x.second)
 end 
 
-function lextra(l::list, r::Array)
+function lextra(l::List, r::Array)
 	if l.first == nothing 
 		return r
 	else 
@@ -19,22 +19,24 @@ function lextra(l::list, r::Array)
 	end 
 end 
 
-function Base.values(l::list)
+function Base.values(l::List)
 	res = [] 
 	lextra(l, res)
 end 
 
-Base.keys( l::list ) = fieldnames( typeof(l) )
-Base.length(l::list) = length(values(l))
+Base.keys( l::List ) = fieldnames( typeof(l) )
+Base.length(l::List) = length(values(l))
+Base.pop!(l::List) = l.first 
+Base.push!(l::List, a::Any) = List(a, l)
  
 macro stack(expr...)
 	esc(genstack(collect(expr)))
 end 
 
 function genstack(e::Vector)
-	q  = Expr(:new, :list , nothing  )
+	q  = Expr(:new, :List , nothing  )
 	for i in e
-		q = Expr(:new, :list , i , q  )
+		q = Expr(:new, :List , i , q  )
 	end
 	return q 
 end 
