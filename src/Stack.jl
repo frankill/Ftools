@@ -24,7 +24,7 @@ function Base.values(l::List)
 	lextra(l, res)
 end 
 
-function llength(l::List, r::Int=0)
+function llength(l::List, r::Int)
 	if l.first == nothing 
 		return r
 	else 
@@ -33,7 +33,7 @@ function llength(l::List, r::Int=0)
 end 
 
 Base.keys( l::List ) = fieldnames( typeof(l) )
-Base.length(l::List) = llength(l)
+Base.length(l::List) = llength(l,0)
 Base.pop!(l::List) = (l.first,l.second) 
 
 function Base.push!(l::List, a::Any)
