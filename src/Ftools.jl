@@ -43,6 +43,12 @@ module Ftools
 	Base.pop!(l::List) = (l.first,l.second) 
 	Base.copy(l::List) = List(l.first, l.second)
 
+	function Base.pop!(l::List)
+		
+		res, l = l.first, l.second
+		res
+	end 
+		
 	function Base.push!(l::List, a::Any)
 		if l.second.first == nothing
 		   l.second = List(a, List())
