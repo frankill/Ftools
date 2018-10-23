@@ -1,7 +1,7 @@
 mutable struct List 
 	   first::Any
            second::List
-           List(first) = (x = new(first); x.second = x )
+           List() = (x = new(nothing); x.second = x )
            List(first, second::List) = new(first,second)
        end
 
