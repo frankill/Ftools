@@ -27,7 +27,7 @@ end
 Base.keys( l::list ) = fieldnames( typeof(l) )
 Base.length(l::list) = length(values(l))
  
-macro list(expr...)
+macro stack(expr...)
 	esc(genlist(collect(expr)))
 end 
 
