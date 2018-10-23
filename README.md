@@ -1,11 +1,8 @@
-# Stack
 ```julia
-a = @list(1,2,3,4,5,"Sdfsdf","sdfsdf")
-
-a.first
-
-a.second
+a = @queue 1 2 3 4 
+b = @stack 1 2 3 4
 
 values(a)
+values(b)
 
 ```
