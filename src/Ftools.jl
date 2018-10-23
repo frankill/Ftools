@@ -40,12 +40,17 @@ module Ftools
 
 	Base.keys( l::List ) = fieldnames( typeof(l) )
 	Base.length(l::List) = llength(l)
-	Base.pop!(l::List) = (l.first,l.second) 
 	Base.copy(l::List) = List(l.first, l.second)
 
 	function Base.pop!(l::List)
-		
-		res, l = l.first, l.second
+		if l.second.first == nothing
+			tmp = l.first 
+			l.first = nothing 
+			return tmp
+		end 
+		res ,tmp = l.first, copy(l.second) 
+		l.first =  tmp.first
+		l.second = tmp.second
 		res
 	end 
 		
