@@ -28,7 +28,7 @@ function llength(l::List, r::Int=0)
 	if l.first == nothing 
 		return r
 	else 
-	 	lextra(l.second, r+1)
+	 	llength(l.second, r+1)
 	end 
 end 
 
