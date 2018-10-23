@@ -24,25 +24,18 @@ function Base.values(l::List)
 	lextra(l, res)
 end 
 
-function llength(l::List, r::Int=0)
+function llength(l::List, r::Int==0)
 	if l.first == nothing 
 		return r
 	else 
-	 	llength(l.second, r+1)
+	 	lextra(l.second, r+1)
 	end 
 end 
 
 Base.keys( l::List ) = fieldnames( typeof(l) )
 Base.length(l::List) = llength(l)
 Base.pop!(l::List) = (l.first,l.second) 
-
-function Base.push!(l::List, a::Any, top::Bool)
-	tmp = l
-	l.second = List()
-	l.first = a
-	l.second = tmp 
-	return l
-end 
+Base.copy(l::List) = List(l.first, l.second)
 
 function Base.push!(l::List, a::Any)
 	if l.second.first == nothing
@@ -50,6 +43,13 @@ function Base.push!(l::List, a::Any)
 	else
 		push!(l.second, a)
 	end 
+end 
+
+function Base.push!(l::List, a::Any, top::Bool)
+	tmp = List(a , List())
+	tmp.second = copy(l) 
+	l.second = tmp.second  
+	l.first = tmp.first
 end 
  
 macro stack(expr...)
