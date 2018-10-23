@@ -53,14 +53,12 @@ module Ftools
 
 	function Base.push!(a::Any, l::List )
 		tmp = List(a , l)
-		l.second = tmp.second  
-		l.first = tmp.first
+		l.first,l.second = tmp.first, tmp.second  
 	end 
 
 	function Base.push!(l::List, a::Any , test::Any)
 		if l.second.first == test
-		   tmp = List(a, l.second.second)
-		   l.second.second = tmp
+		   l.second.second = List(a, l.second.second)
 		else
 			push!(l.second, a, test)
 		end 
