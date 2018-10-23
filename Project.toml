@@ -1,0 +1,10 @@
+authors = ["frank"]
+name = "Ftools"
+uuid = "b2998e7c-d692-11e8-1d79-c18f02ec97e1"
+version = "0.1.0"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
