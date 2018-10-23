@@ -28,15 +28,13 @@ Base.keys( l::list ) = fieldnames( typeof(l) )
 Base.length(l::list) = length(values(l))
  
 macro stack(expr...)
-	esc(genlist(collect(expr)))
+	esc(genstack(collect(expr)))
 end 
 
-function genlist(e::Vector)
-	q  = Expr(:new, :list , e[1]  )
-
+function genstack(e::Vector)
+	q  = Expr(:new, :list , nothing  )
 	for i in e
 		q = Expr(:new, :list , i , q  )
-	end 
-
+	end
 	return q 
 end 
