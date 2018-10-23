@@ -34,7 +34,7 @@ end
 
 Base.keys( l::List ) = fieldnames( typeof(l) )
 Base.length(l::List) = llength(l)
-Base.pop!(l::List) = l.first 
+Base.pop!(l::List) = (l.first,l.second) 
 
 function Base.push!(l::List, a::Any)
 	if l.second.first == nothing
