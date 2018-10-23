@@ -24,7 +24,7 @@ function Base.values(l::List)
 	lextra(l, res)
 end 
 
-function llength(l::List, r::Int==0)
+function llength(l::List, r::Int=0)
 	if l.first == nothing 
 		return r
 	else 
