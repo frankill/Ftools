@@ -44,7 +44,8 @@ module Ftools
 
 	function Base.pop!(l::List)
 		l.first == nothing && return nothing 
-		res ,tmp = l.first, copy(l.second) 
+		tmp = l.second.first == nothing ? List() : copy(l.second) 
+		res = l.first
 		l.first =  tmp.first
 		l.second = tmp.second
 		res
