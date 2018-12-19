@@ -76,7 +76,7 @@ module Ftools
 
 	include("Stack.jl")
 	include("Queue.jl")
-	include("tools")
+	include("tools.jl")
 
 
 end 
