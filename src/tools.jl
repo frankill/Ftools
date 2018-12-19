@@ -14,8 +14,10 @@ end
 Base.unique(A::Vector{T}, name::AbstractString) where T <: Union{Dict, NamedTuple} = findfirst(A, name) |> q -> view(A, q) 
 
 
-Mytype = Union{Symbol , Expr}
-
+Mytype = Union{Symbol , Expr} 
+extra(d::Expr) = d.head == :(::) ? d.args[1] : d 
+extra(d::Symbol) = d
+extra(d::AbstractString) = d 
 
 function rep_func(a::Mytype , b::Mytype)
     
