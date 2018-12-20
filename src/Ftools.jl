@@ -13,6 +13,7 @@ module Ftools
 	       end
 
 	list(value::Any) = List(value, List())
+	list() 		 = List()
 	
 	function Base.show( io::IO, x::List)
 		x.first == nothing  && return 
@@ -57,7 +58,7 @@ module Ftools
 	function Base.push!(l::List, a::Any)
 		
 		if l.first == nothing
-		   l = List(a, List())
+		   l.first, l.second =  a, List()
 		else
 			push!(l.second, a)
 		end 
