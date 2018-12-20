@@ -12,9 +12,6 @@ module Ftools
 		   List(first, second::List) = new(first,second)
 	       end
 	
-	list(value::Any) = List(value, List())
-	list(value...) = @queue(value...)
-	
 	function Base.show( io::IO, x::List)
 		x.first == nothing  && return 
 		print(io, x.first, ",")
@@ -81,5 +78,6 @@ module Ftools
 	include("Queue.jl")
 	include("tools.jl")
 
-
+	list(value::Any) = List(value, List())
+	list(value...) = @queue(value...)
 end 
