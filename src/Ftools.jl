@@ -11,7 +11,9 @@ module Ftools
 		   List() = (x = new(nothing); x.second = x )
 		   List(first, second::List) = new(first,second)
 	       end
-
+	
+	list(value::Any) = List(value, List())
+	
 	function Base.show( io::IO, x::List)
 		x.first == nothing  && return 
 		print(io, x.first, ",")
