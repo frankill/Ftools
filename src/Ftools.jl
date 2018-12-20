@@ -13,6 +13,7 @@ module Ftools
 	       end
 	
 	list(value::Any) = List(value, List())
+	list(value...) = @queue(value...)
 	
 	function Base.show( io::IO, x::List)
 		x.first == nothing  && return 
