@@ -55,8 +55,9 @@ module Ftools
 	end 
 		
 	function Base.push!(l::List, a::Any)
-		if l.second.first == nothing
-		   l.second = List(a, List())
+		
+		if l.first == nothing
+		   l = List(a, List())
 		else
 			push!(l.second, a)
 		end 
