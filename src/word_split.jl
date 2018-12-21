@@ -13,8 +13,8 @@ function arraytodict(data::Vector)
 	res 
 end 
 
-const DICT  = readlines("/Users/mac/JiebaData.jl/deps/dict/idf.utf8") |> arraytodict
-const STOPWORD =  readlines("/Users/mac/JiebaData.jl/deps/dict/stop_words.utf8") |> q -> join(q[1:900], "|") |> Regex 
+const DICT  = readlines("df.utf8") |> arraytodict
+const STOPWORD =  readlines("stop_words.utf8") |> q -> join(q[1:900], "|") |> Regex 
 
 function seg(text::AbstractString)
 
