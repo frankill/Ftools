@@ -1,11 +1,24 @@
  
+function arraytodict(data::Vector)
 
-const DICT  = Dict("张杰" =>2 , "谢谢" =>3, "吃饭" =>2, "谢娜" => 2, "结婚" => 2)
-const STOPWORD =  ("的", "，" , "," , "." , "。" , )
+	res = Dict()
+
+	for i in data
+
+		k, v = split(i, " ") 
+		get!(res, k, parse(Float64, v))
+
+	end 
+
+	res 
+end 
+
+const DICT  = readlines("/Users/mac/JiebaData.jl/deps/dict/idf.utf8") |> arraytodict
+const STOPWORD =  readlines("/Users/mac/JiebaData.jl/deps/dict/stop_words.utf8") |> q -> join(q[1:900], "|") |> Regex 
 
 function seg(text::AbstractString)
 
-	words = rsplit(text, "的")
+	words =  split( text , STOPWORD)
 	res   = Vector(undef, length(words))
 
 	@inbounds for i in 1:length(words)
@@ -37,7 +50,7 @@ end
 function fmax(a::Vector)
 
 	num = length(a)
-	res = Vector{Number}(undef, num)
+	res = Vector{Real}(undef, num)
 	@inbounds for i in 1:num 
 				res[i] = get(DICT, a[i], 1)
 			end 
