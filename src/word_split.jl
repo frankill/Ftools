@@ -40,8 +40,8 @@ function splits(text::AbstractString )
 
 	num = length(text)
 	res = Vector{Tuple}(undef, num )	
-	@inbounds for i in 1:length(text)
-		 res[i] = (first(text, i), last(text, length(text)-i) )
+	@inbounds for i in 1:num
+		 res[i] = (first(text, i), last(text, num-i) )
 	end 
 	res
 
