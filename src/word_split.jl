@@ -9,8 +9,8 @@ function arraytodict(data::Vector{AbstractString})
 
 end 
 
-const DICT  = readlines("df.utf8") |> arraytodict
-const STOPWORD =  readlines("stop_words.utf8") |> q -> join(q[1:900], "|") |> Regex 
+const DICT  = readlines("dict/df.utf8") |> arraytodict
+const STOPWORD =  readlines("dict/stop_words.utf8") |> q -> join(q, "|") |> Regex 
 
 
 function seg(text::AbstractString) 
