@@ -1,4 +1,4 @@
-function arraytodict(data::Vector)
+function arraytodict(data::Vector{AbstractString})
 
 	res = Dict{String, Float64}()
 	for i in data
