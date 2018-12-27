@@ -81,6 +81,7 @@ module Ftools
 	include("Stack.jl")
 	include("Queue.jl")
 	include("tools.jl")
+	include("word_split.jl")
 
 	
 end 
