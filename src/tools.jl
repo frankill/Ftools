@@ -48,8 +48,4 @@ macro set(t...)
            collect_to_set(collect(t))
 end
 
-function collect_to_set(t::Vector)
-
-        Expr(:call, :Set , Expr(:vect, t...))
-
-end
+@inline collect_to_set(t::Vector) = Expr(:call, :Set , Expr(:vect, t...))

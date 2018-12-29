@@ -3,7 +3,7 @@ __precompile__()
 module Ftools
 
 	export @stack, @queue, List ,list
-	export rep, unique, findfirst
+	export rep
 	export @set
 
 	mutable struct List
